@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Owner Dashboard · GreenZone Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+
+  <body>
+    <!-- ======= LOGIN ======= -->
+    <div class="login-screen" id="login-screen">
+      <form class="login-card" id="login-form">
+        <div class="login-logo" id="login-logo"></div>
+        <h1>Owner Dashboard</h1>
+        <p class="login-sub">Enter your PIN to manage bookings.</p>
+        <div class="field">
+          <input type="password" id="pin-input" inputmode="numeric" placeholder="••••" maxlength="6" autocomplete="off" />
+        </div>
+        <p class="login-err" id="login-err"></p>
+        <button class="btn btn-primary btn-block" type="submit">Unlock Dashboard</button>
+        <a class="back-site" href="index.html">← Back to website</a>
+      </form>
+    </div>
+
+    <!-- ======= DASHBOARD ======= -->
+    <div class="dash" id="dash" hidden>
+      <aside class="side">
+        <div class="side-brand">
+          <span class="brand-mark" id="side-mark"></span>
+          <div>
+            <strong id="side-name">GreenZone Arena</strong>
+            <small>Owner Dashboard</small>
+          </div>
+        </div>
+        <nav class="side-nav">
+          <button class="nav-btn active" data-view="overview">Overview</button>
+          <button class="nav-btn" data-view="bookings">Bookings</button>
+          <button class="nav-btn" data-view="slots">Slot Manager</button>
+          <button class="nav-btn" data-view="pricing">Pricing</button>
+          <button class="nav-btn" data-view="settings">Settings</button>
+        </nav>
+        <div class="side-foot">
+          <a href="index.html" class="side-link">View Website →</a>
+          <button class="btn btn-outline btn-sm" id="logout">Lock</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="view-title">Overview</h1>
+            <p class="topbar-date" id="topbar-date"></p>
+          </div>
+          <div class="topbar-actions">
+            <span class="owner-chip" id="owner-chip">PIN mode</span>
+            <a href="index.html#booking" class="btn btn-primary btn-sm">Open Bookings</a>
+          </div>
+        </header>
+
+        <!-- OVERVIEW -->
+        <section class="view" id="view-overview">
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-icon">T</span>
+              <div><strong id="stat-today-bookings">0</strong><small>Today's Bookings</small></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">₹</span>
+              <div><strong id="stat-today-revenue">₹0</strong><small>Today's Revenue</small></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">⏱</span>
+              <div><strong id="stat-available">0</strong><small>Available Slots Today</small></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">👥</span>
+              <div><strong id="stat-customers">0</strong><small>Total Customers</small></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Today's bookings</h2>
+              <span class="panel-badge" id="today-count">0</span>
+            </div>
+            <div class="booking-list" id="today-list"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Upcoming bookings</h2>
+              <span class="panel-badge" id="upcoming-count">0</span>
+            </div>
+            <div class="booking-list" id="upcoming-list"></div>
+          </div>
+        </section>
+
+        <!-- BOOKINGS -->
+        <section class="view" id="view-bookings" hidden>
+          <div class="tabs" id="booking-tabs">
+            <button class="tab active" data-tab="upcoming">Upcoming</button>
+            <button class="tab" data-tab="today">Today</button>
+            <button class="tab" data-tab="history">History</button>
+            <button class="tab" data-tab="all">All</button>
+          </div>
+          <div class="panel">
+            <div class="booking-list" id="all-list"></div>
+          </div>
+        </section>
+
+        <!-- SLOT MANAGER -->
+        <section class="view" id="view-slots" hidden>
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Block slots & maintenance</h2>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="sm-sport">Sport</label>
+                <select id="sm-sport"></select>
+              </div>
+              <div class="field">
+                <label for="sm-date">Date</label>
+                <input type="date" id="sm-date" />
+              </div>
+            </div>
+            <p class="hint">Click a slot to cycle its status: <b>Free</b> → <b>Blocked</b> → <b>Maintenance</b> → <b>Free</b>.</p>
+            <div class="sm-grid" id="sm-grid"></div>
+          </div>
+        </section>
+
+        <!-- PRICING -->
+        <section class="view" id="view-pricing" hidden>
+          <div class="panel">
+            <div class="panel-head"><h2>Hourly pricing per sport</h2></div>
+            <div class="price-rows" id="price-rows"></div>
+            <div class="panel-actions">
+              <button class="btn btn-primary" id="save-pricing">Save Pricing</button>
+              <button class="btn btn-outline" id="reset-pricing">Reset to Default</button>
+            </div>
+            <p class="hint" id="pricing-status"></p>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="view" id="view-settings" hidden>
+          <div class="panel">
+            <div class="panel-head"><h2>Change dashboard PIN</h2></div>
+            <div class="field">
+              <label for="new-pin">New PIN (4-6 digits)</label>
+              <input type="password" id="new-pin" inputmode="numeric" maxlength="6" />
+            </div>
+            <div class="panel-actions">
+              <button class="btn btn-primary" id="save-pin">Update PIN</button>
+            </div>
+            <p class="hint" id="pin-status"></p>
+            <div class="panel-head" style="margin-top:2rem;"><h2>About this dashboard</h2></div>
+            <p class="hint">
+              Bookings made on the website are stored in this browser (localStorage). This dashboard works offline
+              and is ideal for a single-owner setup. For bookings visible across multiple devices and real payment
+              webhooks, connect a backend — see the README.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/content.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>

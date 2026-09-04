@@ -1,0 +1,41 @@
+# Node
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# Java / Spring Boot
+backend/springboot/target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ai-service/.pytest_cache/
+ai-service/models/
+
+# Env & secrets
+.env
+.env.local
+*.pem
+*.key
+!infrastructure/deployment/*.example
+
+# Local storage
+backend/springboot/storage/
+data/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# IDE
+*.iml

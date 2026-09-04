@@ -1,0 +1,810 @@
+{
+  "domain": "health",
+  "version": "0.1.0-seed",
+  "note": "Seed glossary — grows towards 500-1000 signs/domain. Each entry requires verification against a listed source.",
+  "glosses": [
+    {
+      "id": "hth_001",
+      "gloss": "pain",
+      "english": "pain",
+      "category": "symptom",
+      "aliases": [
+        "dard"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Clawed fingers dig/press at the painful place (e.g., head, stomach)",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_002",
+      "gloss": "fever",
+      "english": "fever",
+      "category": "symptom",
+      "aliases": [
+        "bukhar"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Fingers slide across forehead (heat) — verify per region",
+      "regional_variants": [
+        {
+          "region": "mumbai",
+          "note": "forehead-to-temple sweep with open hand"
+        }
+      ],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_003",
+      "gloss": "headache",
+      "english": "headache",
+      "category": "symptom",
+      "aliases": [
+        "head-pain"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "PAIN at temple/forehead (two hands clasping head)",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_004",
+      "gloss": "stomachache",
+      "english": "stomach pain",
+      "category": "symptom",
+      "aliases": [
+        "stomach-pain"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "PAIN at abdomen with clawed hand",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_005",
+      "gloss": "cough",
+      "english": "cough",
+      "category": "symptom",
+      "aliases": [
+        "khansi"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Fist near mouth, two quick forward motions (coughing)",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_006",
+      "gloss": "cold",
+      "english": "cold / runny nose",
+      "category": "symptom",
+      "aliases": [
+        "zukham"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Pinch nose + close eyes motion; or sniffing; verify",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_007",
+      "gloss": "vomit",
+      "english": "vomit",
+      "category": "symptom",
+      "aliases": [
+        "naausea",
+        "ultra"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Hand near mouth with tremor, leaning forward",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_008",
+      "gloss": "dizziness",
+      "english": "dizziness",
+      "category": "symptom",
+      "aliases": [
+        "chakkar",
+        "vertigo"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Index finger circles around ear/head",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_009",
+      "gloss": "burning",
+      "english": "burns / burning",
+      "category": "symptom",
+      "aliases": [
+        "jaIn"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Fingers wiggle then snap back from painful spot (heat)",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_010",
+      "gloss": "wound",
+      "english": "wound / injury",
+      "category": "symptom",
+      "aliases": [
+        "ghaav",
+        "injury"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Draw slash on forearm, or bandaged-hand motion",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_011",
+      "gloss": "head",
+      "english": "head",
+      "category": "body_part",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Tap side of head with flat hand",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_012",
+      "gloss": "eye",
+      "english": "eye",
+      "category": "body_part",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Point index finger at eye",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_013",
+      "gloss": "ear",
+      "english": "ear",
+      "category": "body_part",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Point/pinch earlobe",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_014",
+      "gloss": "nose",
+      "english": "nose",
+      "category": "body_part",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Pinch nose tip with two fingers",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_015",
+      "gloss": "mouth",
+      "english": "mouth / throat",
+      "category": "body_part",
+      "aliases": [
+        "throat"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Touch mouth or throat with index finger",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_016",
+      "gloss": "tooth",
+      "english": "tooth / teeth",
+      "category": "body_part",
+      "aliases": [
+        "dant"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Tap teeth with index finger (or finger over front teeth)",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_017",
+      "gloss": "stomach",
+      "english": "stomach / abdomen",
+      "category": "body_part",
+      "aliases": [
+        "belly"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Both hands over abdomen, palm flat",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_018",
+      "gloss": "chest",
+      "english": "chest",
+      "category": "body_part",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Tap chest with open hand",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_019",
+      "gloss": "back",
+      "english": "back",
+      "category": "body_part",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Reach over shoulder, tap back",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_020",
+      "gloss": "arm",
+      "english": "arm / hand",
+      "category": "body_part",
+      "aliases": [
+        "hand"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Tap forearm with open hand",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_021",
+      "gloss": "leg",
+      "english": "leg / foot",
+      "category": "body_part",
+      "aliases": [
+        "foot"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Tap thigh or show foot; context distinguishes",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_022",
+      "gloss": "medicine",
+      "english": "medicine",
+      "category": "medicine",
+      "aliases": [
+        "dawa"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Two fingers at palm (pill) brought to mouth",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_023",
+      "gloss": "tablet",
+      "english": "tablet / pill",
+      "category": "medicine",
+      "aliases": [
+        "pill",
+        "capsule"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Pinch pill and move to mouth",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_024",
+      "gloss": "syrup",
+      "english": "syrup",
+      "category": "medicine",
+      "aliases": [
+        "sherb"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Bottle-to-spoon pour then to mouth",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_025",
+      "gloss": "injection",
+      "english": "injection",
+      "category": "medicine",
+      "aliases": [
+        "shot",
+        "injection"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Index+middle of one hand press into other forearm (needle)",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_026",
+      "gloss": "drip",
+      "english": "drip / IV",
+      "category": "medicine",
+      "aliases": [
+        "saline"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Finger slides down inner forearm with drip tap",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_027",
+      "gloss": "prescription",
+      "english": "prescription",
+      "category": "medicine",
+      "aliases": [
+        "parchi"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Writing + sheet of paper motion; then hand out slip",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_028",
+      "gloss": "bandage",
+      "english": "bandage",
+      "category": "medicine",
+      "aliases": [
+        "pati"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Wrap motion around the wounded limb",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_029",
+      "gloss": "cotton",
+      "english": "cotton / gauge",
+      "category": "medicine",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Pinch soft cotton motion near wound",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_030",
+      "gloss": "operation",
+      "english": "surgery / operation",
+      "category": "medicine",
+      "aliases": [
+        "surgery"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Scalpel cut motion across flat palm + surgical context",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_031",
+      "gloss": "hospital",
+      "english": "hospital",
+      "category": "facility",
+      "aliases": [
+        "aspatal"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Cross (red cross) made on arm with two fingers + building context",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_032",
+      "gloss": "clinic",
+      "english": "clinic / doctor chamber",
+      "category": "facility",
+      "aliases": [
+        "doctor-chamber"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Cross + smaller building; or DOCTOR + room",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_033",
+      "gloss": "pharmacy",
+      "english": "pharmacy / chemist",
+      "category": "facility",
+      "aliases": [
+        "chemist",
+        "medical-shop"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "MEDICINE + SHOP sequence",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_034",
+      "gloss": "ambulance",
+      "english": "ambulance",
+      "category": "facility",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Red-cross sign + steering/bell motion; or flasing light on head; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_035",
+      "gloss": "referral",
+      "english": "referral",
+      "category": "service",
+      "aliases": [
+        "refer"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Push flat hand from one side to other (handover to next hospital)",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_036",
+      "gloss": "wheelchair",
+      "english": "wheelchair",
+      "category": "service",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Both fists rotate at sides (pushing wheels)",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_037",
+      "gloss": "emergency",
+      "english": "emergency",
+      "category": "service",
+      "aliases": [
+        "115",
+        "92",
+        "urgent"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Both hands flap rapidly at sides (urgent); verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_038",
+      "gloss": "first-aid",
+      "english": "first aid",
+      "category": "service",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Cross + wrap sequence; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_039",
+      "gloss": "test",
+      "english": "test / lab test",
+      "category": "service",
+      "aliases": [
+        "x-ray",
+        "blood-test"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Pinch finger (blood drop) + drop on slide; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_040",
+      "gloss": "x-ray",
+      "english": "X-ray",
+      "category": "service",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Hands framing a film + scan motion; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_041",
+      "gloss": "admission",
+      "english": "admission (to ward)",
+      "category": "service",
+      "aliases": [
+        "admit"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Push flat hand forward into a bed/ward space",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_042",
+      "gloss": "discharge",
+      "english": "discharge (from hospital)",
+      "category": "service",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Pull flat hand back from ward space",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_043",
+      "gloss": "appointment",
+      "english": "appointment / OPD ticket",
+      "category": "service",
+      "aliases": [
+        "opd"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Write ticket + number motion; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_044",
+      "gloss": "health-card",
+      "english": "health card / Ayushman",
+      "category": "service",
+      "aliases": [
+        "ayushman"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "CARD sign at chest + health context",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_045",
+      "gloss": "diabetes",
+      "english": "diabetes / sugar",
+      "category": "condition",
+      "aliases": [
+        "sugar"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Pinch finger (blood) + drop on tongue motion; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_046",
+      "gloss": "blood-pressure",
+      "english": "blood pressure",
+      "category": "condition",
+      "aliases": [
+        "bp"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Arm bent, index fingers press inner elbow like a cuff",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_047",
+      "gloss": "heart",
+      "english": "heart",
+      "category": "condition",
+      "aliases": [
+        "dil"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Both hands make heart shape over chest",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_048",
+      "gloss": "asthma",
+      "english": "asthma / breathing trouble",
+      "category": "condition",
+      "aliases": [
+        "saans"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Hands on chest, heaving motion (breath difficulty)",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_049",
+      "gloss": "pregnancy",
+      "english": "pregnancy",
+      "category": "condition",
+      "aliases": [
+        "garbhavati"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Hands over belly, rounded motion",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_050",
+      "gloss": "fracture",
+      "english": "fracture / bone injury",
+      "category": "condition",
+      "aliases": [
+        "broken-bone"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Snap index fingers apart (bone crack) at site",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_051",
+      "gloss": "poison",
+      "english": "poison",
+      "category": "condition",
+      "aliases": [
+        "jeher"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Shudder + dark liquid shake motion; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_052",
+      "gloss": "doctor",
+      "english": "doctor",
+      "category": "person",
+      "aliases": [
+        "vaidya"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Tapping pulse at wrist + STETHOSCOPE context; verify",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_053",
+      "gloss": "nurse",
+      "english": "nurse",
+      "category": "person",
+      "aliases": [],
+      "fingerspelled": false,
+      "sign_notes": "Syringe + cross combination; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_054",
+      "gloss": "asha",
+      "english": "ASHA / ANM worker",
+      "category": "person",
+      "aliases": [
+        "anm",
+        "health-worker"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Health-visit case motion + uniform collar; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_055",
+      "gloss": "interpreter",
+      "english": "interpreter (sign)",
+      "category": "person",
+      "aliases": [
+        "translator"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Two index fingers point alternately at two people (between)",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    },
+    {
+      "id": "hth_056",
+      "gloss": "waiting",
+      "english": "wait for doctor",
+      "category": "action",
+      "aliases": [
+        "wait"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "WAIT sign then point around the row; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_057",
+      "gloss": "how-feel",
+      "english": "how do you feel",
+      "category": "question",
+      "aliases": [
+        "feel",
+        "aur-kaisa"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Both hands wipe chest downward + WHY/WHAT brows; verify",
+      "regional_variants": [],
+      "source_ref": "community",
+      "verified": false
+    },
+    {
+      "id": "hth_058",
+      "gloss": "better",
+      "english": "better / improvement",
+      "category": "action",
+      "aliases": [
+        "accha",
+        "thik"
+      ],
+      "fingerspelled": false,
+      "sign_notes": "Both thumbs up + nod, shoulders relaxed",
+      "regional_variants": [],
+      "source_ref": "islrtc",
+      "verified": false
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BhashaSetu Labeler</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="logo">॥</span>
+    <h1>BhashaSetu <small>ISL labeling workbench</small></h1>
+  </div>
+  <div class="header-meta">
+    <span id="serverBadge" class="badge">connecting…</span>
+    <span id="statChips" class="chips"></span>
+    <nav>
+      <button data-view="queue" class="active">Queue</button>
+      <button data-view="record">Record video</button>
+      <button data-view="stats">Stats</button>
+      <button data-view="register">Register</button>
+    </nav>
+  </div>
+</header>
+
+<main id="view-queue" class="view">
+  <aside id="queuePanel">
+    <div class="panel-head">
+      <h2>Sample queue</h2>
+      <select id="queueDomain"><option value="">all domains</option></select>
+      <select id="queueStatus">
+        <option value="">any status</option>
+        <option value="registered">registered</option>
+        <option value="labeled">labeled</option>
+        <option value="consensus">consensus</option>
+        <option value="qa_pass">qa pass</option>
+        <option value="qa_reject">qa reject</option>
+        <option value="withdrawn">withdrawn</option>
+      </select>
+      <span id="queueCount"></span>
+    </div>
+    <ul id="queueList" class="queue"></ul>
+  </aside>
+
+  <section id="playerPanel">
+    <div id="stage" class="stage">
+      <video id="video" controls playsinline></video>
+      <canvas id="overlay"></canvas>
+      <div id="noVideo" class="empty hidden">
+        <p>No video registered for this sample yet.</p>
+        <p class="muted">Keypoint-only mode: scrub below to review the signing skeleton.</p>
+      </div>
+    </div>
+    <div id="transport" class="transport">
+      <label><input type="checkbox" id="toggleOverlay" checked> skeleton overlay</label>
+      <span class="spacer"></span>
+      <button id="btnPlay" title="play (keypoints mode)">▶</button>
+      <input type="range" id="frameScrub" min="0" max="0" value="0" step="1">
+      <span id="frameLabel">0 / 0</span>
+    </div>
+  </section>
+
+  <aside id="detailPanel">
+    <div class="panel-head"><h2>Sample</h2><span id="sampleId"></span></div>
+    <dl id="metaList" class="meta"></dl>
+
+    <details open>
+      <summary>Annotate (voting)</summary>
+      <div class="form">
+        <label>Domains
+          <select id="labelDomain"></select>
+        </label>
+        <label>Gloss (signing order, hyphenated)
+          <input id="labelGloss" list="glossSuggest" placeholder="e.g. ration-card mine need" autocomplete="off">
+          <datalist id="glossSuggest"></datalist>
+        </label>
+        <label>English sentence (NLG target)
+          <textarea id="labelEnglish" rows="2" placeholder="I need my ration card."></textarea>
+        </label>
+        <label>Region / dialect
+          <select id="labelRegion"></select>
+        </label>
+        <label>Dialect notes
+          <input id="labelDialectNotes" placeholder="e.g. Chennai variant: two open-B hands">
+        </label>
+        <label>Confidence
+          <input id="labelConfidence" type="range" min="0" max="100" value="80">
+          <span id="confValue">0.80</span>
+        </label>
+        <div class="flags">
+          <label><input type="checkbox" class="flag" value="ambiguous"> ambiguous</label>
+          <label><input type="checkbox" class="flag" value="fingerspelled"> fingerspelled</label>
+          <label><input type="checkbox" class="flag" value="out-of-frame"> out of frame</label>
+          <label><input type="checkbox" class="flag" value="glossy"> gloss-tagging doubt</label>
+        </div>
+        <label>Annotator id
+          <input id="labelAnnotator" placeholder="e.g. A1" >
+        </label>
+        <button id="btnSubmitLabel" class="primary">Submit vote</button>
+      </div>
+    </details>
+
+    <details>
+      <summary>Consensus</summary>
+      <div id="consensusBox" class="consensus">
+        <p class="muted">Waiting for votes…</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>QA gate</summary>
+      <div class="form">
+        <label>Reviewer <input id="qaReviewer" placeholder="R1"></label>
+        <label>Notes <input id="qaNotes" placeholder="hands in frame, gloss complete"></label>
+        <button id="btnQaPass" class="primary">Pass</button>
+        <button id="btnQaReject" class="danger">Reject</button>
+      </div>
+    </details>
+
+    <details>
+      <summary>Consent &amp; signer</summary>
+      <div id="consentBox" class="muted">—</div>
+      <div class="form">
+        <input id="consFormId" placeholder="form id e.g. CF-12">
+        <button id="btnConsentGrant">Grant consent</button>
+        <button id="btnConsentWithdraw" class="danger">Withdraw signer</button>
+      </div>
+    </details>
+
+    <details>
+      <summary>ISL grammar cheat sheet</summary>
+      <ul class="hint">
+        <li>OSV order: Object → Subject → Verb (<code>card-ration mine need</code>)</li>
+        <li>No copula, no articles (<code>fever I</code> = "I have a fever")</li>
+        <li>Fingerspell proper nouns (<code>A-D-H-A-A-R</code>)</li>
+        <li>2-handed signs are the norm; weak hand = placement cue</li>
+        <li>Questions: raised brows (yes/no), furrowed + wh-sign</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Provenance</summary>
+      <pre id="provenanceBox" class="provenance">none</pre>
+    </details>
+  </aside>
+</main>
+
+<section id="view-stats" class="view hidden"></section>
+
+<section id="view-record" class="view hidden">
+  <div class="panel-head"><h2>Record real video (webcam)</h2></div>
+  <div class="register-grid">
+    <div class="card">
+      <h3>1. Who is signing (consented signer)</h3>
+      <div class="form">
+        <label>Signer <select id="recSigner"></select></label>
+        <label>Domain <select id="recDomain"></select></label>
+        <label>What will they sign (gloss hint, hyphenated) <input id="recGloss" placeholder="e.g. ration-card"></label>
+        <p class="muted">Region + consent form are taken from the signer's consent record.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>2. Consent check (mandatory)</h3>
+      <div class="form">
+        <label><input type="checkbox" id="recConsent">
+          I confirm the signer's consent is recorded per <b>docs/CONSENT.md</b> and this
+          recording may be used for training + dataset release.</label>
+        <button id="btnSaveRec" class="primary" disabled>Save to corpus</button>
+        <p id="recStatus" class="muted">No recording yet.</p>
+      </div>
+    </div>
+  </div>
+  <div class="register-grid">
+    <div class="card">
+      <h3>Live camera</h3>
+      <div class="form">
+        <button id="btnCamStart">Start camera</button>
+        <button id="btnRec" disabled>● Record</button>
+        <button id="btnStop" disabled>■ Stop</button>
+        <video id="camPreview" autoplay muted playsinline class="recvideo"></video>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Recorded clip (review before saving)</h3>
+      <video id="recPlayback" controls playsinline class="recvideo"></video>
+    </div>
+  </div>
+</section>
+
+<section id="view-register" class="view hidden">
+  <div class="panel-head"><h2>Register sample / signer</h2></div>
+  <div class="register-grid">
+    <div class="card">
+      <h3>Consent record (one per signer)</h3>
+      <div class="form">
+        <label>Anon signer id <input id="rSignerId" placeholder="S-001"></label>
+        <label>Region <select id="rRegion"></select></label>
+        <label>Age group <select id="rAgeGroup">
+          <option></option><option>minor (&lt;18)</option><option>18-30</option>
+          <option>30-50</option><option>50+</option></select></label>
+        <label>Gender <select id="rGender"><option></option><option>female</option><option>male</option><option>non-binary</option></select></label>
+        <label>Handedness <select id="rHandedness"><option></option><option>right</option><option>left</option><option>both</option></select></label>
+        <label><input type="checkbox" id="rNative" checked> native / community signer</label>
+        <label>Consent form id <input id="rFormId" placeholder="CF-…"></label>
+        <div class="usage">
+          <label><input type="checkbox" class="usageBox" value="training" checked> training</label>
+          <label><input type="checkbox" class="usageBox" value="dataset-release"> dataset release</label>
+          <label><input type="checkbox" class="usageBox" value="ui-demo"> UI demo</label>
+        </div>
+        <button id="btnAddConsent" class="primary">Register consent</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>New sample (video clip)</h3>
+      <div class="form">
+        <label>Domain <select id="rDomain"></select></label>
+        <label>Signer <select id="rSignerSelect"></select></label>
+        <label>Source kind <select id="rSourceKind">
+          <option value="self-recorded">self-recorded</option>
+          <option value="islrtc">ISLRTC</option>
+          <option value="nishtha">NISHTHA</option>
+          <option value="youtube">YouTube educator</option>
+          <option value="community">community</option>
+          <option value="other">other</option>
+        </select></label>
+        <label>Source url <input id="rSourceUrl" placeholder="https://… (provenance)"></label>
+        <label>Video path <input id="rVideoPath" placeholder="raw/ISL-PDS-00001.mp4"></label>
+        <label>Keypoints path <input id="rKeypointsPath" placeholder="keypoints/ISL-PDS-00001.json"></label>
+        <label>Initial gloss_seq (comma sep) <input id="rGlossSeq" placeholder="rice"></label>
+        <label>Consent status
+          <select id="rConsentStatus"><option value="pending">pending</option><option value="granted">granted</option></select></label>
+        <button id="btnAddSample" class="primary">Register sample</button>
+      </div>
+    </div>
+  </div>
+  <div class="register-grid">
+    <div class="card">
+      <h3>Export manifest</h3>
+      <p class="muted">Only consented + voted + QA-passed samples ship in the manifest.
+        This is the single source of truth for a dataset release.</p>
+      <label>Version <input id="exportVersion" value="v0.1.0"></label>
+      <button id="btnExport" class="primary">Export manifest</button>
+      <pre id="exportResult" class="provenance"></pre>
+    </div>
+  </div>
+</section>
+
+<div id="toast" class="toast hidden"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

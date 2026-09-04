@@ -1,0 +1,6 @@
+# Increment (a) runs on Python stdlib only — zero installs required.
+#
+# Increment (b) keypoint extraction will add:
+#   mediapipe
+#   numpy
+#   opencv-python   # optional, for frame preprocessing
