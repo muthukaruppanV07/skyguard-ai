@@ -44,6 +44,7 @@ export const statisticsApi = {
 export const simulationApi = {
   inject: (data) => api.post('/simulate/anomaly', data),
   reset: () => api.post('/simulate/reset'),
+  advancedAction: (action) => api.post('/simulate/advanced', { action }),
 }
 
 export const detectionApi = {

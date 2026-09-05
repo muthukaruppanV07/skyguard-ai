@@ -401,6 +401,27 @@ class AdvancedSIHDemo:
             for i, step in enumerate(self.demo_steps)
         ]
 
+    async def run_step_by_action(self, action: str, params: Dict = None) -> Dict[str, Any]:
+        params = params or {}
+        action_map = {
+            "initialize_advanced": lambda: self._initialize_advanced(5),
+            "start_esp32_fleet": lambda: self._start_esp32_fleet(3),
+            "load_imd_data": lambda: self._load_imd_data(3),
+            "load_monsoon": lambda: self._load_monsoon(3),
+            "baseline": lambda: self._run_baseline(3),
+            "inject": lambda: self._inject_anomaly(params, 5),
+            "esp32_anomaly": lambda: self._esp32_anomaly(params, 3),
+            "export_onnx": lambda: self._export_onnx(5),
+            "train_lstm": lambda: self._train_lstm(10),
+            "load_monsoon": lambda: self._load_monsoon(3),
+            "reset_all": lambda: self._reset_all(3),
+        }
+        
+        if action in action_map:
+            return await action_map[action]()
+        
+        return {"status": "error", "error": f"Unknown action: {action}"}
+
 
 class QuickAdvancedDemo:
     def __init__(self, injector: AnomalyInjector):

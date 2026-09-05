@@ -5,6 +5,7 @@ from typing import Literal
 from backend.database.session import get_db
 from backend.simulation.anomaly_injector import AnomalyInjector
 from backend.config import ANOMALY_INJECTION_TYPES
+from backend.simulation.advanced_demo import AdvancedSIHDemo
 
 router = APIRouter(prefix="/simulate", tags=["simulation"])
 
@@ -12,6 +13,11 @@ router = APIRouter(prefix="/simulate", tags=["simulation"])
 class AnomalyInjectionRequest(BaseModel):
     station_id: str
     fault_type: Literal[tuple(ANOMALY_INJECTION_TYPES)]
+    params: dict = {}
+
+
+class AdvancedActionRequest(BaseModel):
+    action: str
     params: dict = {}
 
 
@@ -32,3 +38,11 @@ async def reset_simulation(db: AsyncSession = Depends(get_db)):
     simulator = AWSSimulator(db)
     await simulator.reset()
     return {"status": "reset", "message": "Simulator reset to healthy state"}
+
+
+@router.post("/advanced")
+async def advanced_action(request: AdvancedActionRequest, db: AsyncSession = Depends(get_db)):
+    injector = AnomalyInjector(db)
+    demo = AdvancedSIHDemo(injector)
+    result = await demo.run_step_by_action(request.action, request.params)
+    return result
