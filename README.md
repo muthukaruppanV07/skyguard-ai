@@ -8,7 +8,7 @@
 
 ## Problem Statement
 
-**SIH 2024 | Problem Statement ID: 26073**
+**SIH 2026 | Problem Statement ID: 26073**
 
 **Organization:** Ministry of Earth Sciences (MoES)  
 **Department:** India Meteorological Department (IMD)  
