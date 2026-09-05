@@ -8,7 +8,7 @@
 
 ## Problem Statement
 
-**SIH 2024 | Problem Statement ID: 26073**
+**SIH 2026 | Problem Statement ID: 26073**
 
 **Organization:** Ministry of Earth Sciences (MoES)  
 **Department:** India Meteorological Department (IMD)  
@@ -321,7 +321,7 @@ Per anomaly type: Spike, Drift, Frozen, Missing, Comm Failure, Multivariate
 
 ## License
 
-Prototype for Smart India Hackathon 2024.  
+Prototype for Smart India Hackathon 2026.  
 Team: SKYGUARD AI
 
 ---

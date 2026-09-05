@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import joblib
 import torch
+from sqlalchemy import select
 
 from backend.config import settings
 from backend.database.session import init_db, AsyncSessionLocal
@@ -22,15 +23,15 @@ async def generate_training_data(db, days: int = 30) -> pd.DataFrame:
     await run_historical_simulation(days=days, interval_minutes=5)
     
     stations = await db.execute(
-        db.query(Station).filter(Station.status == "ACTIVE")
+        select(Station).where(Station.status == "ACTIVE")
     )
     station_list = stations.scalars().all()
     
     all_readings = []
     for station in station_list:
         readings = await db.execute(
-            db.query(Reading)
-            .filter(Reading.station_id == station.id)
+            select(Reading)
+            .where(Reading.station_id == station.id)
             .order_by(Reading.timestamp)
         )
         for r in readings.scalars().all():

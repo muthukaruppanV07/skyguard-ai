@@ -1,0 +1,25 @@
+# Private / consent-limited data — never commit raw media or annotations
+data/raw/**
+data/keypoints/**
+data/annotations/**
+data/manifests/*
+!data/manifests/.gitkeep
+
+# Sourced clips may include consent-restricted material; provenance CSV is kept,
+# harvested media is not.
+data/sourced/clips/**
+!data/sourced/clips/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Tooling
+.vscode/
+.idea/
+
+# Local runtime state
+labeling/*.pid
+*.log

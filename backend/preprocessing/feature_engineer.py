@@ -23,7 +23,7 @@ class FeatureEngineer:
         df = pd.DataFrame(readings)
         df = df.sort_values("timestamp").reset_index(drop=True)
 
-        df["temp_change"] = df["temperature"].diff()
+        df["temperature_change"] = df["temperature"].diff()
         df["pressure_change"] = df["pressure"].diff()
         df["humidity_change"] = df["humidity"].diff()
 
@@ -32,6 +32,10 @@ class FeatureEngineer:
             df[f"{col}_rolling_std_{self.window_size}"] = df[col].rolling(self.window_size, min_periods=1).std().fillna(0)
             df[f"{col}_rolling_min_{self.window_size}"] = df[col].rolling(self.window_size, min_periods=1).min()
             df[f"{col}_rolling_max_{self.window_size}"] = df[col].rolling(self.window_size, min_periods=1).max()
+            
+            # Also create rolling windows for zscore window
+            df[f"{col}_rolling_mean_{self.zscore_window}"] = df[col].rolling(self.zscore_window, min_periods=1).mean()
+            df[f"{col}_rolling_std_{self.zscore_window}"] = df[col].rolling(self.zscore_window, min_periods=1).std().fillna(0)
 
         for col in ["temperature", "pressure", "humidity"]:
             change_col = f"{col}_change"
