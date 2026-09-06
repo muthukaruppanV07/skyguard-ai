@@ -1,12 +1,20 @@
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, TYPE_CHECKING
 from datetime import datetime, timedelta
 from sqlalchemy import select, func, desc, and_, or_
 from sqlalchemy.ext.asyncio import AsyncSession
-from backend.models import Station, Reading, Anomaly, SensorHealth, Alert, ModelRun
-from backend.models.anomaly import AnomalySeverity, RootCause
-from backend.models.sensor_health import SensorType, HealthStatus
-from backend.models.alert import AlertSeverity
-from backend.models.model_run import ModelType
+
+if TYPE_CHECKING:
+    from backend.models import Station, Reading, Anomaly, SensorHealth, Alert, ModelRun
+    from backend.models.anomaly import AnomalySeverity, RootCause
+    from backend.models.sensor_health import SensorType, HealthStatus
+    from backend.models.alert import AlertSeverity
+    from backend.models.model_run import ModelType
+else:
+    from backend.models import Station, Reading, Anomaly, SensorHealth, Alert, ModelRun
+    from backend.models.anomaly import AnomalySeverity, RootCause
+    from backend.models.sensor_health import SensorType, HealthStatus
+    from backend.models.alert import AlertSeverity
+    from backend.models.model_run import ModelType
 
 
 class StationRepository:

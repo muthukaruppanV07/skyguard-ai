@@ -5,7 +5,6 @@ from typing import Literal
 from backend.database.session import get_db
 from backend.simulation.anomaly_injector import AnomalyInjector
 from backend.config import ANOMALY_INJECTION_TYPES
-from backend.simulation.advanced_demo import AdvancedSIHDemo
 
 router = APIRouter(prefix="/simulate", tags=["simulation"])
 
@@ -42,6 +41,7 @@ async def reset_simulation(db: AsyncSession = Depends(get_db)):
 
 @router.post("/advanced")
 async def advanced_action(request: AdvancedActionRequest, db: AsyncSession = Depends(get_db)):
+    from backend.simulation.advanced_demo import AdvancedSIHDemo
     injector = AnomalyInjector(db)
     demo = AdvancedSIHDemo(injector)
     result = await demo.run_step_by_action(request.action, request.params)
