@@ -9,3 +9,10 @@ __pycache__/
 .vercel/
 .pytest_cache/
 .DS_Store
+turf-website/
+bhashasetu/
+missinglink-ai/
+muthukaruppan-portfolio/
+pdsvault/
+skyguard-ai/
+dist/
