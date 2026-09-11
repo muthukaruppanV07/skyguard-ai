@@ -27,13 +27,29 @@ const api = axios.create({
   timeout: 30000,
 });
 
+// Backend origin for split hosting (Vercel frontend + external backend).
+// Same-origin deploy: '' (relative paths). Split deploy: set VITE_API_URL
+// to e.g. https://skyguard-ai.onrender.com/api/v1 at build time.
+function apiOrigin(): string {
+  const base = (import.meta.env.VITE_API_URL as string | undefined) ?? '';
+  if (/^https?:\/\//i.test(base)) {
+    return base.replace(/\/api\/v1\/?$/, '');
+  }
+  return '';
+}
+
 export function wsUrl(): string {
+  const origin = apiOrigin();
+  if (origin) {
+    return origin.replace(/^http/i, 'ws') + '/ws/live';
+  }
   const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
   return `${proto}://${window.location.host}/ws/live`;
 }
 
 export const healthApi = {
-  service: () => axios.get<{ status: string; service: string; version: string }>('/health').then((r) => r.data),
+  service: () =>
+    axios.get<{ status: string; service: string; version: string }>(`${apiOrigin()}/health`).then((r) => r.data),
 };
 
 export const stationsApi = {
