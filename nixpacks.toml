@@ -1,0 +1,12 @@
+# Nixpacks build plan: Python 3.12 + Node 20 in one image.
+[phases.setup]
+nixPkgs = ["python312", "nodejs-20_x"]
+
+[phases.install]
+cmds = ["pip install -r requirements-deploy.txt", "npm --prefix frontend install"]
+
+[phases.build]
+cmds = ["npm --prefix frontend run build"]
+
+[start]
+cmd = "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
