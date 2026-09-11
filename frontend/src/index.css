@@ -2,77 +2,149 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    @apply border-gray-200;
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-100 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'tnum';
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded bg-slate-300 dark:bg-slate-700;
+}
+
+.leaflet-container {
+  @apply border border-slate-200 dark:border-slate-800;
+  font-family: inherit;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
   }
-  body {
-    @apply bg-gray-50 text-gray-900 antialiased font-sans;
-    font-family: 'Inter', system-ui, sans-serif;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer components {
-  .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden;
+.page-enter {
+  animation: fade-up 0.25s ease-out;
+}
+
+.recharts-wrapper :focus {
+  outline: none;
+}
+
+/* Command-center map markers */
+.cc-cluster-wrap {
+  background: transparent;
+  border: none;
+}
+.cc-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 13px;
+  backdrop-filter: blur(2px);
+}
+.cc-pulse-wrap {
+  background: transparent;
+  border: none;
+}
+.cc-pulse {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  border: 2px solid #f97316;
+  animation: cc-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes cc-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
   }
-  .card-header {
-    @apply px-6 py-4 border-b border-gray-100;
-  }
-  .card-body {
-    @apply p-6;
-  }
-  .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-  .btn-primary {
-    @apply btn bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
-  }
-  .btn-secondary {
-    @apply btn bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-500;
-  }
-  .btn-danger {
-    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
-  }
-  .btn-success {
-    @apply btn bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
-  }
-  .btn-warning {
-    @apply btn bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
-  }
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-  }
-  .badge-normal { @apply badge bg-green-100 text-green-800; }
-  .badge-low { @apply badge bg-lime-100 text-lime-800; }
-  .badge-suspicious { @apply badge bg-yellow-100 text-yellow-800; }
-  .badge-high { @apply badge bg-orange-100 text-orange-800; }
-  .badge-critical { @apply badge bg-red-100 text-red-800; }
-  .input {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow;
-  }
-  .label {
-    @apply block text-sm font-medium text-gray-700 mb-1;
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
   }
 }
 
-@layer utilities {
-  .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: theme('colors.gray.300') transparent;
+/* ---------- Presentation mode (16:9 demo recording) ---------- */
+.presentation-mode {
+  scroll-behavior: smooth;
+}
+
+.presentation-mode body {
+  font-size: 17px;
+}
+
+/* 16:9-friendly stage: wide, centered, no side chrome */
+.present-stage {
+  max-width: 1728px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1280px) {
+  .present-stage {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: theme('colors.gray.300');
-    border-radius: 3px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background-color: theme('colors.gray.400');
-  }
+}
+
+/* Calmer, larger surfaces on the demo page */
+.present-demo section {
+  border-radius: 1rem;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.present-demo h1 {
+  letter-spacing: 0.02em;
+}
+
+.present-demo table {
+  font-size: 1rem;
+}
+
+/* Slim scrollbars stay out of the recording */
+.presentation-mode ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.presentation-mode ::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.presentation-mode .leaflet-control-zoom,
+.presentation-mode .leaflet-control-attribution {
+  opacity: 0.55;
+}
+
+.presentation-mode .leaflet-control-zoom:hover,
+.presentation-mode .leaflet-control-attribution:hover {
+  opacity: 1;
 }
