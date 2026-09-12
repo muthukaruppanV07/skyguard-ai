@@ -23,14 +23,16 @@ from backend.app.database.session import AsyncSessionLocal, close_db, init_db, s
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    from backend.app.simulation.engine import SimulationEngine
+    from backend.app.simulation.engine import SimulationEngine, seed_baseline_history
 
     await init_db()
     await seed_stations()
+    station_list = [{"station_id": s["station_id"], "latitude": s["latitude"], "longitude": s["longitude"]}
+                    for s in settings.STATION_COORDS]
+    await seed_baseline_history(AsyncSessionLocal, station_list)
     app.state.sim = SimulationEngine(
         AsyncSessionLocal,
-        [{"station_id": s["station_id"], "latitude": s["latitude"], "longitude": s["longitude"]}
-         for s in settings.STATION_COORDS],
+        station_list,
         step_minutes=60, tick_interval_s=1.0, seed=42,
     )
     yield

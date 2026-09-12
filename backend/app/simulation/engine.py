@@ -32,6 +32,39 @@ from backend.app.simulation.dataset_generator import _clean_physics, STATION_CLI
 
 STOPPED, RUNNING, PAUSED = "STOPPED", "RUNNING", "PAUSED"
 
+
+async def seed_baseline_history(session_factory, stations: list[dict], hours: int = 48,
+                                seed: int = 42) -> int:
+    """Insert clean physics readings ending now when the DB is empty.
+
+    Gives a fresh deployment real baseline history (charts, health, detection
+    context) without fabricating any anomaly. Runs once per empty database.
+    """
+    from sqlalchemy import func, select
+
+    from backend.app.models.observation import Observation
+
+    async with session_factory() as session:
+        existing = (await session.execute(select(func.count()).select_from(Observation))).scalar_one()
+        if existing > 0:
+            return 0
+        now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+        n = 0
+        for i, s in enumerate(stations):
+            rng = random.Random(seed + i)
+            physics: dict = {}
+            climate = STATION_CLIMATE.get(s["station_id"], {"base_temp": 26.0, "base_hum": 60.0,
+                                                            "season_amp": 4.0, "diurnal_amp": 4.5,
+                                                            "elev_m": 200.0})
+            for h in range(hours, 0, -1):
+                ts = now - timedelta(hours=h)
+                t, p, h_ = _clean_physics(climate, ts, rng, physics)
+                session.add(Observation(station_id=s["station_id"], timestamp=ts,
+                                        temperature=t, pressure=p, humidity=h_))
+                n += 1
+        await session.commit()
+        return n
+
 SCENARIO_IDS = [
     "normal", "temp_spike", "temp_drop", "frozen", "drift",
     "pressure", "humidity", "missing", "comm_failure", "multivariate",
