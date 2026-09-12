@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .env
 *.db
-models/
+# ML artifacts at repo root only (must NOT match backend/app/models/)
+/models/
 frontend/node_modules/
 frontend/dist/
