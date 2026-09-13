@@ -174,21 +174,33 @@ export default function StationMap({
     stations.reduce((a, s) => a + s.longitude, 0) / stations.length,
   ];
   return (
-    <MapContainer center={center} zoom={5} style={{ height, width: '100%', borderRadius: 12 }} scrollWheelZoom zoomControl>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Layers
-        stations={stations}
-        healthByStation={healthByStation}
-        healthScore={healthScore}
-        anomalyByStation={anomalyByStation}
-        cluster={cluster}
-        showHeatmap={showHeatmap}
-        heatMetric={heatMetric}
-        searchQuery={searchQuery}
-      />
-    </MapContainer>
+    <div
+      className="relative z-0 block w-full max-w-full overflow-hidden rounded-xl isolate"
+      style={{ height, maxWidth: '100%' }}
+    >
+      <MapContainer
+        center={center}
+        zoom={5}
+        style={{ height: '100%', width: '100%' }}
+        className="z-0 max-w-full"
+        scrollWheelZoom
+        zoomControl
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Layers
+          stations={stations}
+          healthByStation={healthByStation}
+          healthScore={healthScore}
+          anomalyByStation={anomalyByStation}
+          cluster={cluster}
+          showHeatmap={showHeatmap}
+          heatMetric={heatMetric}
+          searchQuery={searchQuery}
+        />
+      </MapContainer>
+    </div>
   );
 }
